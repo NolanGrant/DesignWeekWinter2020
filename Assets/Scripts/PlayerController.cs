@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
         dockAttempt = false;
         deltaX = Input.GetAxis(playerid + "_Horizontal");
         deltaY = Input.GetAxis(playerid + "_Vertical");
+
+        Vector2 inputVec = new Vector2(deltaX, deltaY).normalized;
         /*
         if (Input.GetKey(KeyCode.A))
         {
@@ -60,11 +62,11 @@ public class PlayerController : MonoBehaviour
         }
         
 
-        float velx = _body.velocity.x;
-        velx = deltaX - velx;
-        float vely = _body.velocity.y;
-        vely = deltaY - vely;
-        _body.AddForce(new Vector2(velx, vely));
+        //float velx = _body.velocity.x;
+        //velx = deltaX - velx;
+        //float vely = _body.velocity.y;
+        //vely = deltaY - vely;
+        _body.velocity = inputVec * speed;
 
         if (docked)
         {
